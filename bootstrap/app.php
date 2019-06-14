@@ -23,9 +23,9 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
+$app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +37,10 @@ $app = new Laravel\Lumen\Application(
 | your own bindings here if you like or you can make another file.
 |
 */
-
+//interfaces
+$app->bind('App\Interfaces\UserInterface', 'App\Repositories\UserRepository');
+$app->bind('App\Interfaces\PasswordEncInterface', 'App\Services\Password_hasher');
+//
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
