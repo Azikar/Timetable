@@ -8,6 +8,7 @@ use App\Validators\UserRepoValidator;
 use App\Interfaces\PasswordEncInterface;
 use App\Interfaces\SubordinatesInterface;
 
+
 class UserController extends Controller
 {
     public function __construct(UserInterface $user, PasswordEncInterface $auth, SubordinatesInterface $subordinates)
@@ -19,7 +20,7 @@ class UserController extends Controller
     }
 
     public function add_subordinate(Request $request){
-        $this->validate($request, $this->validator->createCoordinatorRules);
+        $this->validate($request, $this->validator->createUserRules);
         //dd($request->all());
         $createdUser= $this->user->create_user($request);
         return response()->json([

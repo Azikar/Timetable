@@ -43,7 +43,8 @@ $app->bind('App\Interfaces\PasswordEncInterface', 'App\Services\Password_hasher'
 $app->bind('App\Interfaces\JwtInterface', 'App\Services\Jwt');
 $app->bind('App\Interfaces\RoleInterface', 'App\Repositories\RoleRepository');
 $app->bind('App\Interfaces\SubordinatesInterface', 'App\Repositories\SubordinatesRepository');
-
+$app->bind('App\Interfaces\MailerInterface', 'App\Services\Mailer');
+$app->bind('App\Interfaces\PassGeneratorInterface', 'App\Services\PassGenerator');
 
 //
 //middleware
