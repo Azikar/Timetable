@@ -54,6 +54,10 @@ $app->bind('App\Interfaces\PassGeneratorInterface', 'App\Services\PassGenerator'
 $app->routeMiddleware([
     'TokenMiddleware' => App\Http\Middleware\TokenMiddleware::class,
 ]);
+$app->routeMiddleware([
+    'CoordinatorValidation' => App\Http\Middleware\CoordinatorValidation::class,
+]);
+
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);

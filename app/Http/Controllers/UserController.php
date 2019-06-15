@@ -21,7 +21,6 @@ class UserController extends Controller
 
     public function add_subordinate(Request $request){
         $this->validate($request, $this->validator->createUserRules);
-        //dd($request->all());
         $createdUser= $this->user->create_user($request);
         return response()->json([
             'id'=>$createdUser->id,
