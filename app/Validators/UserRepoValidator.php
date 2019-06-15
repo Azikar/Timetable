@@ -7,4 +7,8 @@ class UserRepoValidator{
         'name' => 'required',
         'email' => 'required|email|unique:users',
         'password' => 'required'];
+        
+    public $loginRules=[
+        'email' => 'required|email',
+        'password' => 'required'];
 }

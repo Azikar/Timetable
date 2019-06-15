@@ -18,11 +18,11 @@ class CreateUserCoordinatorsTable extends Migration
             $table->foreign('user_id')
                     ->references('id')->on('users')
                     ->onDelete('cascade');
-            $table->integer('coordinator_id')->unsigned();
-            $table->foreign('coordinator_id')
+            $table->integer('subordinate_id')->unsigned();
+            $table->foreign('subordinate_id')
                     ->references('id')->on('users')
                     ->onDelete('cascade');
-            $table->unique(['user_id','coordinator_id']);
+            $table->unique(['user_id','subordinate_id']);
             $table->timestamps();
         });
     }

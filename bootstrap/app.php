@@ -40,6 +40,22 @@ $app->withEloquent();
 //interfaces
 $app->bind('App\Interfaces\UserInterface', 'App\Repositories\UserRepository');
 $app->bind('App\Interfaces\PasswordEncInterface', 'App\Services\Password_hasher');
+$app->bind('App\Interfaces\JwtInterface', 'App\Services\Jwt');
+$app->bind('App\Interfaces\RoleInterface', 'App\Repositories\RoleRepository');
+$app->bind('App\Interfaces\SubordinatesInterface', 'App\Repositories\SubordinatesRepository');
+
+
+//
+//middleware
+// $app->middleware([
+//     App\Http\Middleware\TokenMiddleware::class
+//  ]);
+$app->routeMiddleware([
+    'TokenMiddleware' => App\Http\Middleware\TokenMiddleware::class,
+]);
+// $app->routeMiddleware([
+//     'auth' => App\Http\Middleware\Authenticate::class,
+// ]);
 //
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,

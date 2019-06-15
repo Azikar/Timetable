@@ -24,6 +24,7 @@ class RegistrationController extends Controller
     public function Registrate(Request $request){
         $this->validate($request, $this->validator->createCoordinatorRules);
         $this->user->create_coordinator($request);
+        
         return 'saved';
     }
 

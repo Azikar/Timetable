@@ -9,6 +9,12 @@ class Password_hasher implements PasswordEncInterface{
         $options = [
             'cost' => 12,
         ];
-        return password_hash($password, PASSWORD_BCRYPT, $options);
+        return trim(password_hash($password, PASSWORD_BCRYPT, $options));
+    }
+    public function verify($password, $hash){
+       
+        if(password_verify($password, $hash))
+            return true;
+        else return false;
     }
 }
