@@ -17,5 +17,6 @@ $router->post('/login', 'LoginController@Login');
 $router->group(['middleware'=>['TokenMiddleware','CoordinatorValidation']], function () use ($router) {
     $router->post('/subordinate', 'UserController@add_subordinate');
     $router->get('/subordinate', 'UserController@get_subordinates');
+    $router->delete('/subordinate/{id}', 'UserController@delete_subordinate');
 
 });

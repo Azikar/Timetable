@@ -45,7 +45,7 @@ $app->bind('App\Interfaces\RoleInterface', 'App\Repositories\RoleRepository');
 $app->bind('App\Interfaces\SubordinatesInterface', 'App\Repositories\SubordinatesRepository');
 $app->bind('App\Interfaces\MailerInterface', 'App\Services\Mailer');
 $app->bind('App\Interfaces\PassGeneratorInterface', 'App\Services\PassGenerator');
-
+$app->bind('App\Interfaces\PermissionsValidatorInterface', 'App\Services\PermissionsValidator');
 //
 //middleware
 // $app->middleware([

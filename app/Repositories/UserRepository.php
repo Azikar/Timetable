@@ -63,4 +63,7 @@ class UserRepository implements UserInterface{
     public function set_coordinator($user,$coordinator){
         $user->Coordinators()->sync($coordinator);
     }
+    public function delete_user($id){
+        $this->user->findOrFail($id)->delete();
+    }
 }

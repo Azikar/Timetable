@@ -30,17 +30,16 @@ class LoginController extends Controller
     public function Login(Request $request){
         $this->validate($request, $this->validator->loginRules);
         $user=$this->user->get_user_by_email($request->email);
-        
         if($user && $this->auth->verify($request->password, $user->password))
             {
                 $token=$this->jwt->createJwt($user);
-            return response()->json([
-                'name' => $user->name,
-                'email'=> $user->email,
-                'jwt' => $this->jwt->createJwt($user),
-                'roles'=>$this->user->get_user_roles($user),
-                'code'=>200,
-            ],200);
+                return response()->json([
+                    'name' => $user->name,
+                    'email'=> $user->email,
+                    'jwt' => $this->jwt->createJwt($user),
+                    'roles'=>$this->user->get_user_roles($user),
+                    'code'=>200,
+                ],200);
         }
         else  return response()->json([
             'message'=>'failed to log in',

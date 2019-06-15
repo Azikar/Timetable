@@ -10,6 +10,6 @@ interface UserInterface{
     public function update_user_data($data);
     public function get_user_roles($id);
     public function setRole($user,$roles);
-
+    public function delete_user($id);
 
 }
