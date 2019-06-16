@@ -36,13 +36,28 @@ class WeekController extends Controller
     }
     public function get_user_timetable(Request $request, $id){
         $result=$this->week->get_user_timetable($request->coordinator_id, $id);
-        if($result)
+        if($result!=false)
             return response()->json([
                 'week'=>$result,
             ],200);
         else return response()->json([
             'message'=>'failed',
         ],400);
+    }
+
+    public function add_week_to_start(Request $request, $id){
+        $week= $this->week->create_Week_at_start($request->coordinator_id, $id);
+        if($week){
+            $days= $this->weekFill->fill_week_with_7_days($week);
+            $this->dayRepo->create_days($days);
+            return response()->json([
+                'week'=>$this->week->get_week_by_id($week->id),
+            ],200);
+        }
+        else return response()->json([
+            'message'=>'failed',
+        ],400);
+        
     }
 
     //

@@ -17,7 +17,10 @@ class dateCalculator implements dateCalculatorInterface{
         return $response;
     }
     public function sub_Week($date){
-
+        $date=new Carbon($date);
+        $response['start']=$date->copy()->startOfWeek()->subDays(7);
+        $response['end']=$date->copy()->endOfWeek()->subDays(7);
+        return $response;
     }
     public function add_Day($date){
         $date=new Carbon($date);

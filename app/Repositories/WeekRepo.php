@@ -23,10 +23,10 @@ class WeekRepo implements WeekRepoInterface{
         if($this->permvalidate->belongs_to_coordinator($coordinator_id, $id)){
             $firsts_week=$this->get_First_week($id);
             if($this->get_First_week($id))
-                $new_dates=$this->dateCalc->addWeek($firsts_week->start);
+                $new_dates=$this->dateCalc->sub_Week($firsts_week->start);
             else {
                 $user=$this->userRepo->get_User_By_id($id);
-                $new_dates=$this->dateCalc->addWeek($user->start_date);
+                $new_dates=$this->dateCalc->sub_Week($user->start_date);
             }
             $this->Week->start=$new_dates['start'];
             $this->Week->end=$new_dates['end'];
@@ -73,7 +73,7 @@ class WeekRepo implements WeekRepoInterface{
     }
     public function get_user_timetable($coordinator_id, $id){
         if($this->permvalidate->belongs_to_coordinator($coordinator_id, $id)){
-            return $this->Week->with('Days.Statistics')->where('user_id', $id)->get();
+            return $this->Week->with('Days.Statistics')->where('user_id', $id)->orderBy('start','ASC')->get();
         }
         else return false;
     }
