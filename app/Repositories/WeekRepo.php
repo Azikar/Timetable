@@ -73,7 +73,7 @@ class WeekRepo implements WeekRepoInterface{
     }
     public function get_user_timetable($coordinator_id, $id){
         if($this->permvalidate->belongs_to_coordinator($coordinator_id, $id)){
-            return $this->Week->with('Days.Statistics')->where('user_id', $id)->orderBy('start','ASC')->get();
+            return $this->Week->with('Days.Statistics', 'Days.Times')->where('user_id', $id)->orderBy('start','ASC')->get();
         }
         else return false;
     }

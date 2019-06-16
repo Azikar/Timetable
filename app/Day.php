@@ -29,5 +29,8 @@ class Day extends Model
     }
     public function Statistics(){
         return $this->hasOne('App\Day_statistic');
-     }
+    }
+    public function Times(){
+        return $this->hasMany('App\Time');
+    }
 }
