@@ -15,7 +15,7 @@ class SubordinatesRepository implements SubordinatesInterface{
     }
 
     // could use redis to save list for further calls
-    public function UserSubordinates($id){
-        return $this->user->findOrFail($id)->subordinates()->select('name','email','id')->get();
+    public function UserSubordinates($user){
+        return $user->subordinates()->select('name','email','id')->get();
     }
 }

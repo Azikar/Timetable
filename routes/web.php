@@ -18,5 +18,7 @@ $router->group(['middleware'=>['TokenMiddleware','CoordinatorValidation']], func
     $router->post('/subordinate', 'UserController@add_subordinate');
     $router->get('/subordinate', 'UserController@get_subordinates');
     $router->delete('/subordinate/{id}', 'UserController@delete_subordinate');
-
+    $router->post('/subordinate_date/{id}', 'UserController@set_timetable_start_date');
+    $router->get('/week_to_end/{id}', 'WeekController@add_week_to_end');
+    $router->get('/timetable/{id}', 'WeekController@get_user_timetable');
 });

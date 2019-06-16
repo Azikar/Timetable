@@ -16,4 +16,8 @@ class UserRepoValidator{
         'name' => 'required',
         'email' => 'required|email|unique:users',
     ];
+
+    public $timetableStartRule=[
+        'start_date'=>'required|date'
+    ];
 }

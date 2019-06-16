@@ -18,6 +18,7 @@ class UserRepository implements UserInterface{
     protected $passwordHasher;
     protected $roleRepo;
     protected $passGen;
+
     public function __construct(PasswordEncInterface $passwordHasher, RoleInterface $roleRepo, PassGeneratorInterface $passGen)
     {
         $this->user=new User();
@@ -58,12 +59,15 @@ class UserRepository implements UserInterface{
         $user->Roles()->sync($roles);
     }
     public function get_User_By_id($id){
-        return $this->user->findOrFail($id);
+        return $this->user->select('id','name','email','start_date')->where('id',$id)->firstOrFail();
     }
     public function set_coordinator($user,$coordinator){
         $user->Coordinators()->sync($coordinator);
     }
     public function delete_user($id){
         $this->user->findOrFail($id)->delete();
+    }
+    public function set_timetable_start_date($id, $date){
+        $this->user->findOrFail($id)->update(['start_date'=>$date]);
     }
 }

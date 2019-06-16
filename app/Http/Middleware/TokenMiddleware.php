@@ -29,5 +29,8 @@ class TokenMiddleware
             ]);
             return $next($request);
         }
+        else return response()->json([
+            'message'=>'expired token',
+        ],400);
     }
 }

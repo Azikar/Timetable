@@ -31,11 +31,11 @@ class UserController extends Controller
 
     }
     public function get_subordinates(Request $request){
-        $data=$this->subordinates->UserSubordinates($request->coordinator_id);
+        $user=$this->user->get_User_By_id($request->coordinator_id);
+        $data=$this->subordinates->UserSubordinates($user);
         return response()->json(['data'=>$data],200);
     }
     public function delete_subordinate(Request $request, $id){
-
         if($this->permvalidate->belongs_to_coordinator($request->coordinator_id, $id)){
             $this->user->delete_user($id);
             return response()->json([
@@ -43,7 +43,23 @@ class UserController extends Controller
             ],200);
         }
         else return response()->json([
+            'message'=>'failed',
+        ],400);
+    }
+
+    public function set_timetable_start_date(Request $request, $id)
+    {
+
+        $this->validate($request, $this->validator->timetableStartRule);
+        if($this->permvalidate->belongs_to_coordinator($request->coordinator_id, $id)){
+            $this->user->set_timetable_start_date($id, $request->start_date);
+            return response()->json([
+                'message'=>'Date changed',
+            ],200);
+        }
+        else return response()->json([
             'message'=>'faile',
         ],400);
     }
+    
 }

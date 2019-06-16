@@ -19,6 +19,7 @@ class LoginController extends Controller
     protected $user;
     protected $jwt;
     protected $auth;
+    
     public function __construct(UserInterface $user, JwtInterface $jwt, PasswordEncInterface $auth)
     {
         $this->user=$user;

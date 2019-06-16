@@ -46,6 +46,11 @@ $app->bind('App\Interfaces\SubordinatesInterface', 'App\Repositories\Subordinate
 $app->bind('App\Interfaces\MailerInterface', 'App\Services\Mailer');
 $app->bind('App\Interfaces\PassGeneratorInterface', 'App\Services\PassGenerator');
 $app->bind('App\Interfaces\PermissionsValidatorInterface', 'App\Services\PermissionsValidator');
+$app->bind('App\Interfaces\dateCalculatorInterface', 'App\Services\dateCalculator');
+$app->bind('App\Interfaces\WeekRepoInterface', 'App\Repositories\WeekRepo');
+$app->bind('App\Interfaces\weekFillServiceInterface', 'App\Services\weekFillService');
+$app->bind('App\Interfaces\DayRepoInterface', 'App\Repositories\DayRepo');
+
 //
 //middleware
 // $app->middleware([

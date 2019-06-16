@@ -11,5 +11,7 @@ interface UserInterface{
     public function get_user_roles($id);
     public function setRole($user,$roles);
     public function delete_user($id);
+    public function set_timetable_start_date($id, $date);
+    public function get_User_By_id($id);
 
 }

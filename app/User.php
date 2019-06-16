@@ -16,7 +16,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email','password'
+        'name', 'email','password','start_date'
     ];
 
     /**
@@ -42,5 +42,7 @@ class User extends Model
     public function subordinates(){
         return $this->belongsToMany(User::class, 'user_coordinators','user_id','subordinate_id');
     }
-
+    public function Weeks(){
+        return $this->hasMany('App\Week');
+    }
 }
