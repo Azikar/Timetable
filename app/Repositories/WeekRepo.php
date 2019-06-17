@@ -63,10 +63,18 @@ class WeekRepo implements WeekRepoInterface{
         return $this->Week->select('id','start','end')->where('user_id',$id)->orderBy('start', 'ASC')->first();
     }
     public function delete_First_week($coordinator_id, $id){
-
+        if($this->permvalidate->belongs_to_coordinator($coordinator_id, $id)){
+            $this->get_First_week($id)->delete();
+            return true;
+        }
+        else return false;
     }
     public function delete_Last_week($coordinator_id, $id){
-
+        if($this->permvalidate->belongs_to_coordinator($coordinator_id, $id)){
+            $this->get_Last_week($id)->delete();
+            return true;
+        }
+        else return false;
     }
     public function get_week_by_id($id){
         return $this->Week->with('Days.Statistics')->where('id', $id)->get();

@@ -56,9 +56,20 @@ class WeekController extends Controller
         }
         else return response()->json([
             'message'=>'failed',
-        ],400);
-        
+        ],400); 
     }
-
-    //
+    public function delete_week_from_start(Request $request, $id){
+        if($this->week->delete_First_week($request->coordinator_id, $id))
+            return response()->json(['message'=>'success'],200);
+        else return response()->json([
+                'message'=>'failed',
+            ],400);
+    }
+    public function delete_week_from_end(Request $request, $id){
+        if($this->week->delete_Last_week($request->coordinator_id, $id))
+            return response()->json(['message'=>'success'],200);
+        else return response()->json([
+                'message'=>'failed',
+            ],400);
+    }
 }

@@ -22,4 +22,6 @@ $router->group(['middleware'=>['TokenMiddleware','CoordinatorValidation']], func
     $router->get('/week_to_end/{id}', 'WeekController@add_week_to_end');
     $router->get('/timetable/{id}', 'WeekController@get_user_timetable');
     $router->get('/week_to_start/{id}', 'WeekController@add_week_to_start');
+    $router->delete('/first_week/{id}', 'WeekController@delete_week_from_start');
+    $router->delete('/last_week/{id}', 'WeekController@delete_week_from_end');
 });

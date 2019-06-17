@@ -16,7 +16,7 @@ class Time extends Model
      * @var array
      */
     protected $fillable = [
-        // 'start','end','total_hours','user_id'
+         'start','end','description','user_id','day_id','total_hours'
     ];
 
     /**
@@ -24,5 +24,10 @@ class Time extends Model
      *
      * @var array
      */
-    
+    public function Day(){
+        return $this->belongsTo('App\Day');
+    }
+    public function User(){
+        return $this->belongsTo('App\User');
+    }
 }
